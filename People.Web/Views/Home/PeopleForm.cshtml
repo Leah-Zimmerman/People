@@ -5,20 +5,20 @@
         <button id="addrow" class="btn btn-success">Add Row</button>
     </div>
     <form method="post" action="/home/addperson">
-        <div class="row" id="rows">
-            <div class="col-md-2 offset-md-2 mt-2">
-                <input type="text" name="people[0].firstname" placeholder="First Name" class="form-control" />
-            </div>
-            <div class="col-md-2 mt-2">
-                <input type="text" name="people[0].lastname" placeholder="Last Name" class="form-control" />
-            </div>
-            <div class="col-md-2 mt-2">
-                <input type="text" name="people[0].age" placeholder="Age" class="form-control" />
-            </div>
-            <div class="col-md-2 mt-2">
-                <ng-form>
-                    <p value=0 class="btn btn-danger">Delete</p>
-                </ng-form>
+        <div id="rows">
+            <div class="row" id="0">
+                <div class="col-md-2 offset-md-2 mt-2">
+                    <input type="text" name="people[0].firstname" placeholder="First Name" class="form-control" />
+                </div>
+                <div class="col-md-2 mt-2">
+                    <input type="text" name="people[0].lastname" placeholder="Last Name" class="form-control" />
+                </div>
+                <div class="col-md-2 mt-2">
+                    <input type="text" name="people[0].age" placeholder="Age" class="form-control" />
+                </div>
+                <div class="col-md-2 mt-2">
+                    <button type="button" id="delete" value=0 class="btn btn-danger">Delete</button>
+                </div>
             </div>
         </div>
         <div class="offset-md-2 mt-2">
