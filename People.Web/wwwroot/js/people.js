@@ -6,14 +6,33 @@
     })
 
     $("#rows").on('click', '.btn-danger', function () {
-        console.log("in button");
-        var id = $(this).val();
-        document.getElementById(id).remove();
-    })
+        const button = $(this);
+        const row = button.closest('.row');
+        row.remove();
+
+        let counter = 0;
+        $(".person-row").each(function () {
+            console.log('came in');
+            const row = $(this);
+            const inputs = row.find('input');
+            console.log(inputs);
+            $(inputs).each(function () {
+                console.log('in here too');
+                const input = $(this);
+                const name = input.attr('name');
+                console.log(name);
+                const IndexOfDot = name.IndexOf('.');
+                const attrName = name.substring(IndexOfDot + 1);
+                input.attr('name', `people[${counter}].${attrName}`);
+            });
+            counter++;
+            number = counter;
+        });
+    });
 
     function AddRow() {
         $("#rows").append(
-            '<div class="row" id="' + number + '">' +
+            '<div class="row person-row" id="' + number + '">' +
             '<div class="col-md-2 offset-md-2 mt-2">' +
             '<input type="text" name="people[' + number + '].firstname" placeholder="First Name" class="form-control" />' +
             '</div>' +

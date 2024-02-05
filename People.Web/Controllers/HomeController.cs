@@ -15,8 +15,12 @@ namespace People.Web.Controllers
             var pm = new PersonManager(_connectionString);
             var pvm = new PeopleViewModel
             {
-                People = pm.GetAll(),
+                People = pm.GetAll()
             };
+            if (TempData["message"]!=null)
+            {
+                pvm.Message = TempData["message"].ToString();
+            }
             return View(pvm);
         }
         public IActionResult PeopleForm()
@@ -27,7 +31,10 @@ namespace People.Web.Controllers
         public IActionResult AddPerson(List<Person> people)
         {
             var pm = new PersonManager(_connectionString);
-            pm.AddMany(people);
+            var peopleToAdd =
+                people.Where(p => !string.IsNullOrEmpty(p.FirstName) && !string.IsNullOrEmpty(p.LastName)).ToList();
+            pm.AddMany(peopleToAdd);
+            TempData["message"] = "People added succesfully!";
             return Redirect("/home/index");
         }
 

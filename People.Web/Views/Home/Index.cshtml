@@ -1,6 +1,15 @@
 ﻿@model PeopleViewModel
 
 <div class="row">
+    @if (!string.IsNullOrEmpty(Model.Message))
+    {
+        <div class="col-md-12">
+            <div class="alert alert-success" role="alert">
+                <h2>@Model.Message</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    }
     <div class="offset-md-2">
         <form action="/home/peopleform">
             <button class="btn btn-success">Add People</button>
